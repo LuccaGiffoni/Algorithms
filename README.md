@@ -43,7 +43,7 @@ This repository contains a series of coding challenges that I've completed and a
 
 - **WorkoutManager API**
   - **Description**: Implements a Workout Manager API using ASP.NET Core, EF Core, and SQLite.
-  - **Location**: [Github Repoitory](https://github.com/LuccaGiffoni/WorkoutPlanner)
+  - **Location**: [Github Repository](https://github.com/LuccaGiffoni/WorkoutPlanner)
   - **Features**:
     - CRUD operations for `Workout` and `Exercise` entities.
     - API documentation using OpenAPI/Swagger.
