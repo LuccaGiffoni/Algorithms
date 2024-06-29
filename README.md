@@ -1,5 +1,6 @@
 # C# Algorithms Repository | Technical Training
-Welcome to my **C# Coding Challenges** repository! This project is a collection of coding challenges focused on sharpening skills in C# development, covering various topics from string manipulation to advanced database interactions.
+Welcome to my **C# Coding Challenges** repository!
+This project is a collection of coding challenges focused on sharpening skills in C# development, covering various topics from string manipulation to advanced database interactions.
 
 ## Overview
 This repository contains a series of coding challenges that I've completed and am currently working on. Each challenge is designed to test different aspects of C# programming, including algorithms, data structures, and application design.
@@ -16,13 +17,13 @@ This repository contains a series of coding challenges that I've completed and a
 
 - **Remove Vowels from a String**
   - **Description**: Removes all vowels from a given string.
-  - **Location**: [src/Medium/RemoveVowels.cs](src/Medium/RemoveVowels.cs)
+  - **Location**: [Algorithms/Strings/RemoveVowels.cs](Algorithms/Strings/RemoveVowels.cs)
   - **Example Input**: `"Hello World"`
   - **Example Output**: `"Hll Wrld"`
 
 - **Order Numbers by Even and Odd**
   - **Description**: Orders numbers in an array, evens first (ascending), odds last (descending).
-  - **Location**: [src/Medium/OrderNumbers.cs](src/Medium/OrderNumbers.cs)
+  - **Location**: [Algorithms/Numbers/OrderNumbers.cs](Algorithms/Numbers/OrderNumbers.cs)
   - **Example Input**: `[1, 12, 90, 87, 345, 67, 98, 100, 124]`
   - **Example Output**: `[12, 90, 98, 100, 124, 345, 87, 67, 1]`
 
@@ -30,19 +31,19 @@ This repository contains a series of coding challenges that I've completed and a
 
 - **Anagram Grouping**
   - **Description**: Groups a list of strings into anagrams.
-  - **Location**: [src/High/AnagramGrouping.cs](src/High/AnagramGrouping.cs)
+  - **Location**: [Algorithms/Strings/AnagramGrouping.cs](Algorithms/Strings/AnagramGrouping.cs)
   - **Example Input**: `["listen", "silent", "enlist", "rat", "tar", "art"]`
   - **Example Output**: `[["listen", "silent", "enlist"], ["rat", "tar", "art"]]`
 
 - **Custom Dependency Injection Container**
   - **Description**: Implements a custom dependency injection container from scratch.
-  - **Location**: [src/High/CustomDIContainer.cs](src/High/CustomDIContainer.cs)
+  - **Location**: [Algorithms/DependencyInjection/Container.cs](Algorithms/DependencyInjection/Container.cs)
 
 ### Very High-Level Challenges
 
 - **WorkoutManager API**
   - **Description**: Implements a Workout Manager API using ASP.NET Core, EF Core, and SQLite.
-  - **Location**: [src/VeryHigh/WorkoutManagerApi/](src/VeryHigh/WorkoutManagerApi/)
+  - **Location**: [Github Repoitory](https://github.com/LuccaGiffoni/WorkoutPlanner)
   - **Features**:
     - CRUD operations for `Workout` and `Exercise` entities.
     - API documentation using OpenAPI/Swagger.
@@ -56,19 +57,19 @@ This repository contains a series of coding challenges that I've completed and a
 
 - **Caesar Cipher Encoder/Decoder**
   - **Description**: Encodes and decodes text using the Caesar cipher technique.
-  - **Location**: [src/Medium/CaesarCipher.cs](src/Medium/CaesarCipher.cs)
+  - **Location**: [Algorithm/Strings/CaesarCipher.cs](Algorithm/Strings)
     
 ### High-Level Challenges
 
 - **Implement Trie Data Structure**
   - **Description**: Implements a Trie data structure for efficient string searching.
-  - **Location**: [src/High/TrieDataStructure.cs](src/High/TrieDataStructure.cs)
+  - **Location**: [Algorithm/Strings/TrieDataStructure.cs](Algorithm/Strings)
 
 ### Very High-Level Challenges
 
 - **Build a Chatbot API**
   - **Description**: Implements a simple chatbot API using ASP.NET Core and integrates it with a front-end client.
-  - **Location**: [src/VeryHigh/ChatbotApi/](src/VeryHigh/ChatbotApi/)
+  - **Location**: new repository coming soon!
 
 ## Planned Challenges
 
@@ -76,7 +77,7 @@ This repository contains a series of coding challenges that I've completed and a
 
 - **Validate Palindrome Permutations**
   - **Description**: Checks if any permutation of a string is a palindrome.
-  - **Location**: [src/Medium/ValidatePalindromePermutation.cs](src/Medium/ValidatePalindromePermutation.cs)
+  - **Location**: [Algorithm/Strings/ValidatePalindromePermutation.cs](Algorithm/Strings)
   - **Example Input**: `"civic"`
   - **Example Output**: `true`
     
@@ -84,10 +85,10 @@ This repository contains a series of coding challenges that I've completed and a
 
 - **Build a Simple Expression Evaluator**
   - **Description**: Evaluates mathematical expressions from string input.
-  - **Location**: [src/High/ExpressionEvaluator.cs](src/High/ExpressionEvaluator.cs)
+  - **Location**: [Algorithm/Strings/ExpressionEvaluator.cs](Algorithm/Strings)
 
 ### Very High-Level Challenges
 
 - **Develop a Task Scheduler API**
   - **Description**: Creates an API to schedule and manage tasks, with recurring task support.
-  - **Location**: [src/VeryHigh/TaskSchedulerApi/](src/VeryHigh/TaskSchedulerApi/)
+  - **Location**: new repository coming soon!
