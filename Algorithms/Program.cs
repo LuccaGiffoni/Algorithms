@@ -15,7 +15,8 @@ public static class Program
         //AnagramGrouping.Run();
 
         //OrderNumbers.Run();
-        CoinsChange.Run();
+        //CoinsChange.Run();
+        TwoArraysMedian.Run();
         
         // CreateDependencyInjection();
 
