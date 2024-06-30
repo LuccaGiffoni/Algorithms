@@ -1,10 +1,16 @@
-﻿namespace Algorithms.Strings
+﻿using Algorithms.DependencyInjection.Data;
+
+namespace Algorithms.Challenges.Strings
 {
-    public class RemoveVowels
+    public class RemoveVowels : IChallenge
     {
+        public string Title => "Remove Vowels";
+        public string Description => "Remove all vowels from given string.";
+        public EChallengeLevel Level => EChallengeLevel.Junior;
+        
         private static readonly HashSet<char> Vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
 
-        public static void Run()
+        public void Run()
         {
             var input = Console.ReadLine();
             if (input == null) return;

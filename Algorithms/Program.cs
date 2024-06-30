@@ -1,47 +1,49 @@
 ﻿using Algorithms.DependencyInjection;
-using Algorithms.LINQMethods;
-using Algorithms.Numbers;
-using Algorithms.Strings;
 
-namespace Algorithms;
-
-public static class Program
+namespace Algorithms
 {
-    public static void Main()
+    public static class Program
     {
-        ChallengePicker();
-    }
+        private static readonly Container Container = new();
 
-    private static void ChallengePicker()
-    {
-        while (true)
+        public static void Main()
         {
-            Console.WriteLine("Choose your option:\n" +
-                              "\nStrings:\n0. Reverse Phrases\n1. Remove Vowels\n2. Anagram Grouping\n" +
-                              "\nNumbers:\n3. Order Numbers\n4. Coin Change\n5. Arrays Median\n" +
-                              "\nDI:\n6. Dependency Injection\n");
-            
-            var option = Convert.ToInt16(Console.ReadLine());
-            switch (option)
+            RegisterChallenges();
+            ChallengePicker();
+        }
+
+        private static void RegisterChallenges()
+        {
+            Container.RegisterChallenge(0, new Challenges.Strings.ReversePhrases());
+            Container.RegisterChallenge(1, new Challenges.Strings.RemoveVowels());
+            Container.RegisterChallenge(2, new Challenges.Strings.AnagramGrouping());
+            Container.RegisterChallenge(3, new Challenges.Numbers.OrderNumbers());
+            Container.RegisterChallenge(4, new Challenges.Numbers.CoinsChange());
+            Container.RegisterChallenge(5, new Challenges.Numbers.TwoArraysMedian());
+        }
+
+        private static void ChallengePicker()
+        {
+            while (true)
             {
-                case 0: ReversePhrases.Run();
+                Console.WriteLine("Choose your option (type -1 to exit):");
+                Console.WriteLine(Container.GetMenu());
+
+                if (!int.TryParse(Console.ReadLine(), out var option) || option == -1)
+                {
+                    Console.WriteLine("Exiting...");
                     break;
-                case 1: RemoveVowels.Run();
-                    break;
-                case 2: AnagramGrouping.Run();
-                    break;
-                case 3: OrderNumbers.Run();
-                    break; 
-                case 4: CoinsChange.Run();
-                    break; 
-                case 5: TwoArraysMedian.Run();
-                    break; 
-                case 6: Container.Run();
-                    break;
-                case 7: Aggregation.Run();
-                    break;
-                default: Console.WriteLine("None option selected. Please, type a valid option: ");
-                    break;
+                }
+
+                var challenge = Container.GetChallenge(option);
+                if (challenge != null)
+                {
+                    challenge.Run();
+                }
+                else
+                {
+                    Console.WriteLine("Invalid option. Please try again.");
+                }
             }
         }
     }

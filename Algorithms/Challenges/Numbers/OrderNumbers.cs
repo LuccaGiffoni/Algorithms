@@ -1,16 +1,16 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using Algorithms.DependencyInjection.Data;
 
-namespace Algorithms.Numbers;
+namespace Algorithms.Challenges.Numbers;
 
-public class OrderNumbers
+public class OrderNumbers : IChallenge
 {
+    public string Title => "Order Numbers";
+    public string Description => "Order an array of numbers. The even numbers ascending and the odds descending.";
+    public EChallengeLevel Level => EChallengeLevel.Junior;
+    
     private static readonly int[] Numbers = [1, 12, 90, 87, 345, 67, 98, 100, 124];
     
-    public static void Run()
-    {
-        var orderedNumbers = OrderNumber(Numbers);
-        Console.WriteLine(orderedNumbers);
-    }
+    public void Run() => Console.WriteLine(OrderNumber(Numbers));
 
     private static string OrderNumber(int[] input)
     {

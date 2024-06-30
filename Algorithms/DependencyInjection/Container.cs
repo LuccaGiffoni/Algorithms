@@ -1,47 +1,31 @@
-﻿using Algorithms.DependencyInjection.Implementations;
-using Algorithms.DependencyInjection.Interfaces;
+﻿using Algorithms.DependencyInjection.Data;
 
 namespace Algorithms.DependencyInjection;
 
 public class Container
 {
-    private readonly Dictionary<Type, Func<object?>> _registrations = new();
+    private readonly Dictionary<int, IChallenge> _challenges = new();
 
-    public static void Run()
-    {
-        var container = new Container();
-
-        container.Register<IService, Service>();
-        container.Register<IRepository, Repository>();
-
-        var consumer = container.Resolve<Consumer>();
-        consumer?.Start();
-    }
+    public void RegisterChallenge(int option, IChallenge challenge) => _challenges[option] = challenge;
+    public IChallenge? GetChallenge(int option) => _challenges.GetValueOrDefault(option);
     
-    public void Register<TService, TImplementation>() where TImplementation : TService
+    public string GetMenu()
     {
-        _registrations[typeof(TService)] = () => Resolve(typeof(TImplementation));
-    }
+        var groupedChallenges = _challenges.Values
+            .GroupBy(c => c.Level)
+            .OrderBy(g => g.Key)
+            .ToDictionary(g => g.Key, g => g.ToList());
 
-    public void RegisterSingleton<TService>(TService? instance)
-    {
-        _registrations[typeof(TService)] = () => instance;
-    }
-
-    public TService? Resolve<TService>()
-    {
-        return (TService)Resolve(typeof(TService))!;
-    }
-
-    private object? Resolve(Type serviceType)
-    {
-        if (_registrations.TryGetValue(serviceType, out var creator))
-            return creator();
-
-        var constructor = serviceType.GetConstructors().First();
-        var parameterTypes = constructor.GetParameters().Select(p => p.ParameterType);
-        var parameters = parameterTypes.Select(Resolve).ToArray();
-
-        return Activator.CreateInstance(serviceType, parameters);
+        var menu = new System.Text.StringBuilder();
+        foreach (var level in groupedChallenges.Keys)
+        {
+            menu.AppendLine($"\n{level} Challenges:");
+            foreach (var challenge in groupedChallenges[level])
+            {
+                var option = _challenges.FirstOrDefault(c => c.Value == challenge).Key;
+                menu.AppendLine($"{option}. {challenge.Title}: {challenge.Description}");
+            }
+        }
+        return menu.ToString();
     }
 }

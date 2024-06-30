@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Algorithms.DependencyInjection.Data;
 
-namespace Algorithms.Strings
+namespace Algorithms.Challenges.Strings
 {
-    public class AnagramGrouping
+    public class AnagramGrouping : IChallenge
     {
-        // Write a function that takes a list of strings and groups them by anagrams.
-        // Anagrams are strings made up of the same characters in different orders.
+        public string Title => "Anagram Grouping";
+        public string Description => "Write a function that takes a list of strings and groups them by anagrams.";
+        public EChallengeLevel Level => EChallengeLevel.Easy;
 
         private static readonly List<string> Input = [ "listen", "silent", "enlist", "rat", "tar", "art" ];
 
-        public static void Run()
+        public void Run()
         {
             var groups = GroupAnagrams(Input);
             foreach (var group in groups)
