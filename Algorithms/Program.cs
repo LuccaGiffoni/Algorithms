@@ -20,6 +20,7 @@ namespace Algorithms
             Container.RegisterChallenge(3, new Challenges.Numbers.OrderNumbers());
             Container.RegisterChallenge(4, new Challenges.Numbers.CoinsChange());
             Container.RegisterChallenge(5, new Challenges.Numbers.TwoArraysMedian());
+            Container.RegisterChallenge(6, new Challenges.Logic.JobScheduler());
         }
 
         private static void ChallengePicker()

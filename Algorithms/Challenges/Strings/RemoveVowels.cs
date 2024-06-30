@@ -12,6 +12,7 @@ namespace Algorithms.Challenges.Strings
 
         public void Run()
         {
+            Console.WriteLine("Give a string to remove vowels:\n");
             var input = Console.ReadLine();
             if (input == null) return;
 

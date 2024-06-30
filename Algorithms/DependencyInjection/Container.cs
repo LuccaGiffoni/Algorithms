@@ -26,6 +26,7 @@ public class Container
                 menu.AppendLine($"{option}. {challenge.Title}: {challenge.Description}");
             }
         }
+        
         return menu.ToString();
     }
 }
