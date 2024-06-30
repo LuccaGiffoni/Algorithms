@@ -1,9 +1,23 @@
-﻿namespace Algorithms.DependencyInjection;
+﻿using Algorithms.DependencyInjection.Implementations;
+using Algorithms.DependencyInjection.Interfaces;
+
+namespace Algorithms.DependencyInjection;
 
 public class Container
 {
     private readonly Dictionary<Type, Func<object?>> _registrations = new();
 
+    public static void Run()
+    {
+        var container = new Container();
+
+        container.Register<IService, Service>();
+        container.Register<IRepository, Repository>();
+
+        var consumer = container.Resolve<Consumer>();
+        consumer?.Start();
+    }
+    
     public void Register<TService, TImplementation>() where TImplementation : TService
     {
         _registrations[typeof(TService)] = () => Resolve(typeof(TImplementation));

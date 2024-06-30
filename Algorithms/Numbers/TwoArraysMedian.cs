@@ -1,6 +1,6 @@
 ﻿namespace Algorithms.Numbers
 {
-    public class TwoArraysMedian
+    public static class TwoArraysMedian
     {
         // Parameters for random arrays
         private const int MaxArraySize = 10;
