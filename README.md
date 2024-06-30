@@ -1,94 +1,117 @@
-# C# Algorithms Repository | Technical Training
-Welcome to my **C# Coding Challenges** repository!
-This project is a collection of coding challenges focused on sharpening skills in C# development, covering various topics from string manipulation to advanced database interactions.
+# Algorithms Console Application
+This repository contains a console application for running various algorithmic challenges. The application is modular, allowing for easy addition of new challenges organized by difficulty levels such as Junior, Easy, Intermediate, Hard, Harder, and Expert.
 
-## Overview
-This repository contains a series of coding challenges that I've completed and am currently working on. Each challenge is designed to test different aspects of C# programming, including algorithms, data structures, and application design.
+&nbsp;
+## Getting Started
+### Pre-requisites
+Ensure you have the following installed:
 
-## Table of Contents
+- .NET 6.0 SDK
+- Any IDE for .NET development
 
-1. [Challenges Completed](#challenges-completed)
-2. [Challenges In Progress](#challenges-in-progress)
-3. [Planned Challenges](#planned-challenges)
+&nbsp;
+### Clone the Repository
+Clone the Project
+```bash
+git clone https://github.com/LuccaGiffoni/Algorithms.git
+cd Algorithms
+```
 
-## Challenges Completed
+Build the Project
+```bash
+dotnet build
+```
 
-### Medium-Level Challenges
+Running the Application
 
-- **Remove Vowels from a String**
-  - **Description**: Removes all vowels from a given string.
-  - **Location**: [Algorithms/Strings/RemoveVowels.cs](Algorithms/Strings/RemoveVowels.cs)
-  - **Example Input**: `"Hello World"`
-  - **Example Output**: `"Hll Wrld"`
+``` bash
+dotnet run --project Algorithms
+```
 
-- **Order Numbers by Even and Odd**
-  - **Description**: Orders numbers in an array, evens first (ascending), odds last (descending).
-  - **Location**: [Algorithms/Numbers/OrderNumbers.cs](Algorithms/Numbers/OrderNumbers.cs)
-  - **Example Input**: `[1, 12, 90, 87, 345, 67, 98, 100, 124]`
-  - **Example Output**: `[12, 90, 98, 100, 124, 345, 87, 67, 1]`
+You'll be prompted with a menu to select a challenge to run. The challenges are grouped by their difficulty level.
 
-### High-Level Challenges
+&nbsp;
+### Repository Structure
+```bash
+/Algorithms
+    /DependencyInjection
+        /Data
+            EChallengeLevel.cs      # Enum for challenge levels
+            IChallenge.cs           # Interface for challenges
+        Container.cs                # DI container for challenges
+    /Numbers
+        CoinsChange.cs              # Example numerical challenge
+        OrderNumbers.cs             # Example numerical challenge
+        TwoArraysMedian.cs          # Example numerical challenge
+    /Strings
+        AnagramGrouping.cs          # Example string challenge
+        RemoveVowels.cs             # Example string challenge
+        ReversePhrases.cs           # Example string challenge
+    Program.cs                      # Main entry point for the application
+```
 
-- **Anagram Grouping**
-  - **Description**: Groups a list of strings into anagrams.
-  - **Location**: [Algorithms/Strings/AnagramGrouping.cs](Algorithms/Strings/AnagramGrouping.cs)
-  - **Example Input**: `["listen", "silent", "enlist", "rat", "tar", "art"]`
-  - **Example Output**: `[["listen", "silent", "enlist"], ["rat", "tar", "art"]]`
+&nbsp;
+### Key Files
+- Program.cs: Main entry point that sets up and runs the application.
+- Container.cs: Handles registration and retrieval of challenges.
+- IChallenge.cs: Interface defining the structure of a challenge.
+- EChallengeLevel.cs: Enum defining the difficulty levels for challenges.
 
-- **Custom Dependency Injection Container**
-  - **Description**: Implements a custom dependency injection container from scratch.
-  - **Location**: [Algorithms/DependencyInjection/Container.cs](Algorithms/DependencyInjection/Container.cs)
+&nbsp;
+## Creating a New Challenge
+To add a new challenge to the application, follow these steps:
 
-### Very High-Level Challenges
+### Create your class:
+```csharp
+using Algorithms.DependencyInjection.Data;
 
-- **WorkoutManager API**
-  - **Description**: Implements a Workout Manager API using ASP.NET Core, EF Core, and SQLite.
-  - **Location**: [Github Repository](https://github.com/LuccaGiffoni/WorkoutPlanner)
-  - **Features**:
-    - CRUD operations for `Workout` and `Exercise` entities.
-    - API documentation using OpenAPI/Swagger.
-  - **Example Input**: 
-    - Create Workout: `{ "name": "Cardio Routine", "workoutType": "Cardio", "dayOfTheWeek": 1, "exercises": [{ "name": "Running", "description": "Run for 30 minutes", "sets": 1, "reps": 0, "seconds": 1800 }] }`
-  - **Example Output**: 
-    - Workout Created: `{ "id": "guid-value", "name": "Cardio Routine", "workoutType": "Cardio", "dayOfTheWeek": 1, "exercises": [{ "id": "guid-value", "name": "Running", "description": "Run for 30 minutes", "sets": 1, "reps": 0, "seconds": 1800 }] }`
+namespace Algorithms.Strings
+{
+    public class YourNewChallenge : IChallenge
+    {
+        public void Run()
+        {
+            // Implement the logic for your challenge here
+            Console.WriteLine("Your new challenge is running...");
+        }
 
-## Challenges In Progress
-### Medium-Level Challenges
+        public string Description => "Brief description of what the challenge does.";
+        public string Title => "Your New Challenge";
+        public EChallengeLevel Level => EChallengeLevel.Intermediate;  // Set appropriate level
+    }
+}
+```
 
-- **Caesar Cipher Encoder/Decoder**
-  - **Description**: Encodes and decodes text using the Caesar cipher technique.
-  - **Location**: [Algorithm/Strings/CaesarCipher.cs](Algorithm/Strings)
-    
-### High-Level Challenges
+&nbsp;
+### Register the Challenge
+Open Program.cs and register your new challenge in the RegisterChallenges method:
 
-- **Implement Trie Data Structure**
-  - **Description**: Implements a Trie data structure for efficient string searching.
-  - **Location**: [Algorithm/Strings/TrieDataStructure.cs](Algorithm/Strings)
+``` csharp
+private static void RegisterChallenges()
+{
+    Container.RegisterChallenge(0, new ReversePhrases());
+    Container.RegisterChallenge(1, new RemoveVowels());
+    Container.RegisterChallenge(2, new AnagramGrouping());
+    Container.RegisterChallenge(3, new OrderNumbers());
+    Container.RegisterChallenge(4, new CoinsChange());
+    Container.RegisterChallenge(5, new TwoArraysMedian());
+    Container.RegisterChallenge(6, new DependencyInjectionChallenge());
+    Container.RegisterChallenge(7, new YourNewChallenge());  // Register your new challenge
+}
+```
+**Ensure that each challenge has a unique option number.**
 
-### Very High-Level Challenges
+&nbsp;
+### Test Your Challenge
+Run the application and select your new challenge from the menu to ensure it works as expected.
 
-- **Build a Chatbot API**
-  - **Description**: Implements a simple chatbot API using ASP.NET Core and integrates it with a front-end client.
-  - **Location**: new repository coming soon!
+``` bash
+dotnet run --project Algorithms
+```
 
-## Planned Challenges
+&nbsp;
+## Contributing
+**Contributions are welcome!**
+&nbsp;
 
-### Medium-Level Challenges
-
-- **Validate Palindrome Permutations**
-  - **Description**: Checks if any permutation of a string is a palindrome.
-  - **Location**: [Algorithm/Strings/ValidatePalindromePermutation.cs](Algorithm/Strings)
-  - **Example Input**: `"civic"`
-  - **Example Output**: `true`
-    
-### High-Level Challenges
-
-- **Build a Simple Expression Evaluator**
-  - **Description**: Evaluates mathematical expressions from string input.
-  - **Location**: [Algorithm/Strings/ExpressionEvaluator.cs](Algorithm/Strings)
-
-### Very High-Level Challenges
-
-- **Develop a Task Scheduler API**
-  - **Description**: Creates an API to schedule and manage tasks, with recurring task support.
-  - **Location**: new repository coming soon!
+Please fork the repository and create a pull request for any enhancements, bug fixes, or new challenges. Follow the existing coding style and add appropriate documentation for new features.
