@@ -2,6 +2,7 @@
 using Algorithms.DependencyInjection.Implementations;
 using Algorithms.DependencyInjection.Interfaces;
 using Algorithms.LINQMethods;
+using Algorithms.Numbers;
 
 namespace Algorithms;
 
@@ -14,10 +15,11 @@ public static class Program
         //AnagramGrouping.Run();
 
         //OrderNumbers.Run();
+        CoinsChange.Run();
         
-        //CreateDependencyInjection();
+        // CreateDependencyInjection();
 
-        Aggregation.Run();
+        //Aggregation.Run();
     }
 
     private static void CreateDependencyInjection()
