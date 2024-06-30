@@ -1,4 +1,4 @@
-# Algorithms Console Application
+# Algorithms
 This repository contains a console application for running various algorithmic challenges. The application is modular, allowing for easy addition of new challenges organized by difficulty levels such as Junior, Easy, Intermediate, Hard, Harder, and Expert.
 
 &nbsp;
