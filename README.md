@@ -124,6 +124,72 @@ dotnet run --project Algorithms
 ```
 
 &nbsp;
+## Creating a New Benchmark
+To add a new benchmark to the application, follow these steps:
+
+### Create your class:
+
+``` csharp
+using Algorithms.DependencyInjection.Data;
+using BenchmarkDotNet.Attributes;
+
+namespace Algorithms.Benchmarks
+{
+    public class YourNewBenchmark : IBenchmark
+    {
+        public string Title => "Your New Benchmark";
+        public EBenchmarkCategory Category => EBenchmarkCategory.Numbers;
+
+        [Benchmark]
+        public int OriginalMethod()
+        {
+            // Implement the original method for your benchmark here
+            return 0; // Example return value
+        }
+
+        [Benchmark]
+        public int OptimizedMethod()
+        {
+            // Implement the optimized method for your benchmark here
+            return 0; // Example return value
+        }
+    }
+}
+```
+
+&nbsp;
+### Register the Benchmark
+Open Program.cs and register your new benchmark in the RegisterBenchmarks method:
+
+``` csharp
+Copiar código
+private static void RegisterBenchmarks()
+{
+    Container.RegisterBenchmark(0, new BinaryConverterBenchmark());
+    // Register your new benchmark
+    Container.RegisterBenchmark(1, new YourNewBenchmark());
+}
+```
+**Ensure that each benchmark has a unique option number.**
+
+&nbsp;
+### Test Your Benchmark
+Run the application and select your new benchmark from the menu to ensure it works as expected.
+
+``` bash
+Copiar código
+dotnet run --project Algorithms
+```
+
+&nbsp;
+### Run Benchmarks with BenchmarkDotNet
+You can execute all benchmarks using BenchmarkDotNet to analyze performance by running the project as Release and selecting the "Benchmark" option and choose one benchmark to run:
+
+``` bash
+dotnet run --configuration Release
+```
+
+&nbsp;
 ## Contributing
 **Contributions are welcome!**
 &nbsp;
