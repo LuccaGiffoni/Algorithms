@@ -1,32 +1,41 @@
 ﻿using Algorithms.DependencyInjection.Data;
+using System;
+using System.Diagnostics;
 
-namespace Algorithms.Challenges.Numbers;
-
-public class BinaryConverter : IChallenge
+namespace Algorithms.Challenges.Numbers
 {
-    public string Description => "Create a function that receives a binary and returns its value as a base ten number";
-    public string Title => "Binary Converter";
-    public EChallengeLevel Level => EChallengeLevel.Easy;
-    
-    public void Run()
+    public class BinaryConverter : IChallenge
     {
-        Console.WriteLine("Type your binary:");
-        var binary = Console.ReadLine();
+        public string Description => "Create a function that receives a binary string and returns its value as a base ten number.";
+        public string Title => "Binary Converter";
+        public EChallengeLevel Level => EChallengeLevel.Easy;
 
-        if (binary != null) Console.WriteLine(ConvertBinary(binary.Trim()));
-    }
+        public void Run()
+        {
+            Console.WriteLine("Type your binary:");
+            var binary = Console.ReadLine()?.Trim();
 
-    private static int ConvertBinary(string binary)
-    {
-        var digits = binary.ToCharArray().Select(character => character.ToString()).ToList();
+            if (binary == null) return;
+            
+            var decimalValue = ConvertBinary(binary);
+            Console.WriteLine(decimalValue != -1
+                ? $"Decimal value: {decimalValue}"
+                : "Invalid binary input. Only '0' and '1' are allowed.");
+        }
 
-        // Throw error if it's any of the digits is not a 0 or 1
-        if (!digits.All(digit => digit is "0" or "1")) return -1;
-        
-        // Reverse to sync indexing and exponential factor
-        digits.Reverse();
+        private static int ConvertBinary(string binary)
+        {
+            var decimalValue = 0;
 
-        // Select all, calculate the exponential and summing all
-        return digits.Select((t, i) => Convert.ToInt32(t) * (int)Math.Pow(2, i)).Sum();
+            foreach (var bit in binary)
+            {
+                if (bit != '0' && bit != '1') return -1; // Invalid input
+
+                // Shift the current value to the left (multiply by 2) and add the bit's value
+                decimalValue = (decimalValue << 1) | (bit - '0');
+            }
+            
+            return decimalValue;
+        }
     }
 }
