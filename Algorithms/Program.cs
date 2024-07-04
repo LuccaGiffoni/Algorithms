@@ -21,7 +21,8 @@ namespace Algorithms
             Container.RegisterChallenge(4, new Challenges.Numbers.CoinsChange());
             Container.RegisterChallenge(5, new Challenges.Numbers.TwoArraysMedian());
             Container.RegisterChallenge(6, new Challenges.Logic.JobScheduler());
-            Container.RegisterChallenge(7, new Challenges.Strings.TriePrefixTree());7
+            Container.RegisterChallenge(7, new Challenges.Strings.TriePrefixTree());
+            Container.RegisterChallenge(8, new Challenges.Numbers.BinaryConverter());
         }
 
         private static void ChallengePicker()
