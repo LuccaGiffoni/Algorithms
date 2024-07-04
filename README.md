@@ -66,10 +66,12 @@ You'll be prompted with a menu to select a challenge to run. The challenges are 
 
 &nbsp;
 ### Key Files
-- Program.cs: Main entry point that sets up and runs the application.
-- Container.cs: Handles registration and retrieval of challenges.
-- IChallenge.cs: Interface defining the structure of a challenge.
-- EChallengeLevel.cs: Enum defining the difficulty levels for challenges.
+- `Program.cs`: Main entry point that sets up and runs the application.
+- `Container.cs`: Handles registration and retrieval of challenges and benchmarks.
+- `IChallenge.cs`: Interface defining the structure of a challenge.
+- `EChallengeLevel.cs`: Enum defining the difficulty levels for challenges.
+- `IBenchmark`: Interface defining the structure of a benchmark - using BenchmarkDotNet
+- `EBenchmarkCategory`: Enum with benchmarks' categories
 
 &nbsp;
 ## Creating a New Challenge
