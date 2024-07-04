@@ -35,19 +35,33 @@ You'll be prompted with a menu to select a challenge to run. The challenges are 
 ```bash
 /Algorithms
     /DependencyInjection
-        /Data
-            EChallengeLevel.cs      # Enum for challenge levels
-            IChallenge.cs           # Interface for challenges
-        Container.cs                # DI container for challenges
-    /Numbers
-        CoinsChange.cs              # Example numerical challenge
-        OrderNumbers.cs             # Example numerical challenge
-        TwoArraysMedian.cs          # Example numerical challenge
-    /Strings
-        AnagramGrouping.cs          # Example string challenge
-        RemoveVowels.cs             # Example string challenge
-        ReversePhrases.cs           # Example string challenge
+        /Benchmarks
+            EBenchmarkCategory.cs      # Enum for benchmark categories
+            IBenchmark.cs              # Interface for benchmarks
+        /Challenges
+            EChallengeLevel            # Enum for challenge levels
+            IChallenge.cs              # Interface for challenges
+        Container.cs               # DI container for challenges and benchmarks
+
+    /Benchmarks
+        BinaryConverterBenchmark.cs # Benchmark for binary conversion
+
+    /Challenges
+        /Logic
+            JobScheduler.cs         # Challenge for job scheduling
+        /Numbers
+            BinaryConverter.cs      # Challenge for binary conversion
+            CoinsChange.cs          # Challenge for calculating minimum coins for change
+            OrderNumbers.cs         # Challenge for ordering numbers
+            TwoArraysMedian.cs      # Challenge for finding the median of two arrays
+        /Strings
+            AnagramGrouping.cs      # Challenge for grouping anagrams
+            RemoveVowels.cs         # Challenge for removing vowels
+            ReversePhrases.cs       # Challenge for reversing phrases
+            Trie.cs                 # Challenge for implementing a trie
+
     Program.cs                      # Main entry point for the application
+
 ```
 
 &nbsp;
