@@ -1,6 +1,6 @@
-﻿using Algorithms.DependencyInjection.Data;
-using System;
+﻿using System;
 using System.Diagnostics;
+using Algorithms.DependencyInjection.Challenges;
 
 namespace Algorithms.Challenges.Numbers
 {

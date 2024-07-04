@@ -1,4 +1,4 @@
-﻿namespace Algorithms.DependencyInjection.Data
+﻿namespace Algorithms.DependencyInjection.Challenges
 {
     public interface IChallenge
     {

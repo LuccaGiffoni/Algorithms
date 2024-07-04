@@ -1,5 +1,5 @@
 ﻿using System.Numerics;
-using Algorithms.DependencyInjection.Data;
+using Algorithms.DependencyInjection.Challenges;
 
 namespace Algorithms.Challenges.Logic;
 

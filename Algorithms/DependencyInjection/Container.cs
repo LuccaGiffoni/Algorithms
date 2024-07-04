@@ -1,32 +1,30 @@
-﻿using Algorithms.DependencyInjection.Data;
+﻿using Algorithms.DependencyInjection.Benchmarks;
+using Algorithms.DependencyInjection.Challenges;
 
-namespace Algorithms.DependencyInjection;
-
-public class Container
+namespace Algorithms.DependencyInjection
 {
-    private readonly Dictionary<int, IChallenge> _challenges = new();
-
-    public void RegisterChallenge(int option, IChallenge challenge) => _challenges[option] = challenge;
-    public IChallenge? GetChallenge(int option) => _challenges.GetValueOrDefault(option);
-    
-    public string GetMenu()
+    public class Container
     {
-        var groupedChallenges = _challenges.Values
-            .GroupBy(c => c.Level)
-            .OrderBy(g => g.Key)
-            .ToDictionary(g => g.Key, g => g.ToList());
+        private readonly Dictionary<int, IChallenge> _challenges = new();
+        private readonly Dictionary<int, IBenchmark> _benchmarks = new();
 
-        var menu = new System.Text.StringBuilder();
-        foreach (var level in groupedChallenges.Keys)
+        public void RegisterChallenge(int id, IChallenge challenge)
         {
-            menu.AppendLine($"\n{level} Challenges:");
-            foreach (var challenge in groupedChallenges[level])
-            {
-                var option = _challenges.FirstOrDefault(c => c.Value == challenge).Key;
-                menu.AppendLine($"{option}. {challenge.Title}: {challenge.Description}");
-            }
+            _challenges[id] = challenge;
         }
-        
-        return menu.ToString();
+
+        public void RegisterBenchmark(int id, IBenchmark benchmark)
+        {
+            _benchmarks[id] = benchmark;
+        }
+
+        public IChallenge? GetChallenge(int id) => _challenges.GetValueOrDefault(id);
+        public IBenchmark? GetBenchmark(int id) => _benchmarks.GetValueOrDefault(id);
+
+        public string GetChallengeMenu() =>
+            string.Join("\n", _challenges.Select(c => $"{c.Key}. {c.Value.Title}: {c.Value.Description}"));
+
+        public string GetBenchmarkMenu() =>
+            string.Join("\n", _benchmarks.Select(b => $"{b.Key}. {b.Value.Title}"));
     }
 }
