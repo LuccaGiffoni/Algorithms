@@ -1,6 +1,8 @@
 ﻿using Algorithms.Benchmarks;
+using Algorithms.Challenges.Numbers;
+using Algorithms.Challenges.Strings;
+using Algorithms.Challenges.Logic;
 using Algorithms.DependencyInjection;
-using Algorithms.DependencyInjection.Benchmarks;
 using BenchmarkDotNet.Running;
 
 namespace Algorithms
@@ -18,14 +20,18 @@ namespace Algorithms
 
         private static void RegisterChallenges()
         {
-            Container.RegisterChallenge(0, new Challenges.Strings.ReversePhrases());
-            Container.RegisterChallenge(1, new Challenges.Strings.RemoveVowels());
-            Container.RegisterChallenge(2, new Challenges.Strings.AnagramGrouping());
-            Container.RegisterChallenge(3, new Challenges.Numbers.OrderNumbers());
-            Container.RegisterChallenge(4, new Challenges.Numbers.CoinsChange());
-            Container.RegisterChallenge(5, new Challenges.Numbers.TwoArraysMedian());
-            Container.RegisterChallenge(6, new Challenges.Logic.JobScheduler());
-            Container.RegisterChallenge(7, new Challenges.Numbers.BinaryConverter());
+            Container.RegisterChallenge(0, new ReversePhrases());
+            Container.RegisterChallenge(1, new RemoveVowels());
+            Container.RegisterChallenge(2, new AnagramGrouping());
+            Container.RegisterChallenge(3, new OrderNumbers());
+            Container.RegisterChallenge(4, new CoinsChange());
+            Container.RegisterChallenge(5, new TwoArraysMedian());
+            Container.RegisterChallenge(6, new JobScheduler());
+            Container.RegisterChallenge(7, new BinaryConverter());
+            Container.RegisterChallenge(8, new PrimeNumbers());
+            Container.RegisterChallenge(9, new FizzBuzz());
+            Container.RegisterChallenge(10, new LogReader());
+
         }
 
         private static void RegisterBenchmarks()
@@ -66,7 +72,7 @@ namespace Algorithms
         {
             while (true)
             {
-                Console.WriteLine("Choose your challenge (type -1 to go back):");
+                Console.WriteLine("\nChoose your challenge (type -1 to go back):");
                 Console.WriteLine(Container.GetChallengeMenu());
 
                 if (!int.TryParse(Console.ReadLine(), out var option) || option == -1)
