@@ -66,10 +66,12 @@ You'll be prompted with a menu to select a challenge to run. The challenges are 
 
 &nbsp;
 ### Key Files
-- Program.cs: Main entry point that sets up and runs the application.
-- Container.cs: Handles registration and retrieval of challenges.
-- IChallenge.cs: Interface defining the structure of a challenge.
-- EChallengeLevel.cs: Enum defining the difficulty levels for challenges.
+- `Program.cs`: Main entry point that sets up and runs the application.
+- `Container.cs`: Handles registration and retrieval of challenges and benchmarks.
+- `IChallenge.cs`: Interface defining the structure of a challenge.
+- `EChallengeLevel.cs`: Enum defining the difficulty levels for challenges.
+- `IBenchmark`: Interface defining the structure of a benchmark - using BenchmarkDotNet
+- `EBenchmarkCategory`: Enum with benchmarks' categories
 
 &nbsp;
 ## Creating a New Challenge
@@ -98,7 +100,7 @@ namespace Algorithms.Strings
 
 &nbsp;
 ### Register the Challenge
-Open Program.cs and register your new challenge in the RegisterChallenges method:
+Open `Program.cs` and register your new challenge in the RegisterChallenges method:
 
 ``` csharp
 private static void RegisterChallenges()
@@ -159,7 +161,7 @@ namespace Algorithms.Benchmarks
 
 &nbsp;
 ### Register the Benchmark
-Open Program.cs and register your new benchmark in the RegisterBenchmarks method:
+Open `Program.cs` and register your new benchmark in the RegisterBenchmarks method:
 
 ``` csharp
 Copiar código
@@ -173,17 +175,8 @@ private static void RegisterBenchmarks()
 **Ensure that each benchmark has a unique option number.**
 
 &nbsp;
-### Test Your Benchmark
-Run the application and select your new benchmark from the menu to ensure it works as expected.
-
-``` bash
-Copiar código
-dotnet run --project Algorithms
-```
-
-&nbsp;
 ### Run Benchmarks with BenchmarkDotNet
-You can execute all benchmarks using BenchmarkDotNet to analyze performance by running the project as Release and selecting the "Benchmark" option and choose one benchmark to run:
+You can execute all benchmarks using BenchmarkDotNet to analyze performance by running the project as Release selecting the "Benchmark" option and choosing one benchmark to run:
 
 ``` bash
 dotnet run --configuration Release
