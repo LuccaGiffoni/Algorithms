@@ -1,18 +1,28 @@
-﻿using System.Diagnostics;
-using Algorithms.DependencyInjection.Challenges;
+﻿using Algorithms.DependencyInjection.Benchmarks;
+using BenchmarkDotNet.Attributes;
 using Newtonsoft.Json;
 
-namespace Algorithms.Challenges.Strings;
+namespace Algorithms.Benchmarks;
 
-public class LogReader : IChallenge
+public class LogReaderBenchmark : IBenchmark
 {
-    public string Description => "Read logs from local file";
+    private const string Binary = "1101010111001010";
+
     public string Title => "Log Reader";
-    public EChallengeLevel Level => EChallengeLevel.Intermediate;
+    public EBenchmarkCategory Category => EBenchmarkCategory.Strings;
+
+    [Benchmark] public void OriginalMethod() => Run();
+    [Benchmark] public void OptimizedMethod() => _ = Optimized();
 
     private const string FileName = "logs.json";
 
-    public async void Run()
+    private async Task Run()
+    {
+        await SaveLogs(CreateLogs(CreateMachines()));
+        await ReadLogs();
+    }
+
+    private async Task Optimized()
     {
         await SaveLogs(CreateLogs(CreateMachines()));
         await ReadLogs();
@@ -43,7 +53,7 @@ public class LogReader : IChallenge
         await File.WriteAllTextAsync(FileName, json);
     }
     
-    private List<Machine> CreateMachines(int quantity = 3)
+    private static List<Machine> CreateMachines(int quantity = 3)
     {
         var machines = new List<Machine>();
 
@@ -71,7 +81,7 @@ public class LogReader : IChallenge
     }
     
     // Classes
-    private class Machine
+    private record Machine
     {
         public Guid Id { get; } = Guid.NewGuid();
     }

@@ -31,12 +31,14 @@ namespace Algorithms
             Container.RegisterChallenge(8, new PrimeNumbers());
             Container.RegisterChallenge(9, new FizzBuzz());
             Container.RegisterChallenge(10, new LogReader());
+            Container.RegisterChallenge(11, new Knapsack());
 
         }
 
         private static void RegisterBenchmarks()
         {
             Container.RegisterBenchmark(0, new BinaryConverterBenchmark());
+            Container.RegisterBenchmark(1, new LogReaderBenchmark());
         }
 
         private static void MainMenu()
