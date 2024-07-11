@@ -35,7 +35,7 @@ public class Knapsack : IChallenge
         return items;
     }
     
-    private static void FindMaxItems(int maxWeight, List<Item> items)
+    private static void FindMaxItems(int maxWeight, IReadOnlyList<Item> items)
     {
         var n = items.Count;
         var dp = new int[n + 1, maxWeight + 1]; // DP table
